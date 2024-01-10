@@ -77,16 +77,19 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+from decouple import config
+
 DATABASES = {
-      'default': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'OKbqeqqBk1dnafQd9qEF',
-        'HOST': 'containers-us-west-39.railway.app',
-        'PORT': '6239',
+        'NAME': config('DB_NAME', default='railway'),
+        'USER': config('DB_USER', default='postgres'),
+        'PASSWORD': config('DB_PASSWORD', default='OKbqeqqBk1dnafQd9qEF'),
+        'HOST': config('DB_HOST', default='containers-us-west-39.railway.app'),
+        'PORT': config('DB_PORT', default='6239'),
     }
 }
+
 
 
 
