@@ -16,12 +16,12 @@ from django.contrib.auth.decorators import login_required
 
 def send_email(request,user_email,first_name):
     
-    subject = 'Welcome to Filmotrend, where fashion trends are always in style.'
-    message = f'Hi {first_name}, Find your new favorite fashion trends at Filmotrend. See the pdf for more information about us'
+    subject = 'Welcome to AbyTrend, where fashion trends are always in style.'
+    message = f'Hi {first_name}, Find your new favorite fashion trends at AbyTrend. See the pdf for more information about us'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [user_email]
      # Attach a file to the email
-    file_path = f"{settings.BASE_DIR}/filmy.pdf"
+    file_path = f"{settings.BASE_DIR}/AbyTrend.pdf"
     
     # print("email has been sent")
 

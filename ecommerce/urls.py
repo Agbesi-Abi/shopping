@@ -22,6 +22,13 @@ from products.views import cart,add_to_cart,search_page,wishlist,add_to_wishlist
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
+from reportlab.pdfgen import canvas
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_page , name="login_page"),
