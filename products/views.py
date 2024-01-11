@@ -250,7 +250,7 @@ def cart(request):
             amount=after_shipping
         else:
             amount=10    
-        payment=client.order.create({'amount': amount * 100,'currency': "INR", 'payment_capture':1})
+        payment=client.order.create({'amount': amount * 100,'currency': "GHS", 'payment_capture':1})
         
         cart_items.razore_pay_order_id=payment['id']
         cart_items.save()

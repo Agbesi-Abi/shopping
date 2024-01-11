@@ -91,37 +91,57 @@ def signin_page(request):
     #     # return redirect('/'
     #     print(request.user)
     # else:
-    return render(request, 'sign.html')
+    return render(request, 'email_verification.html')
 
 def logout_page(request):
     logout(request)
-    return redirect('/')   
+    return redirect('/login')   
 
 
-def email_verification(request,email_token):
-    user = Profile.objects.get(email_token= email_token)
-    # print(user.user)
-    curr_user=user.user
-    # print(curr_user.first_name)
-    # print(type(curr_user))
+def email_verification(request, email_token):
+    user_profile = Profile.objects.get(email_token=email_token)
+    curr_user = user_profile.user
+
     if request.method == 'POST':
-         email_Otp=request.POST.get('email_Otp')  
-        #  print(email_Otp)
-         if(user.email_Otp==email_Otp):
-              user.is_email_verified = True
-              user.save()
-              send_email(request,curr_user.username,curr_user.first_name)
-              login(request,curr_user)
-              return redirect('/')
-         else:
-            messages.error(request,'Invalid Otp')
+        email_otp = request.POST.get('email_Otp')  
+
+        if user_profile.email_Otp == email_otp:  
+            user_profile.is_email_verified = True
+            user_profile.save()
+            send_email(request, curr_user.username, curr_user.first_name)
+            login(request, curr_user)
+            return redirect('/')
+        else:
+            messages.error(request, 'Invalid Otp')
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    
-    context={
-        "curr_user":curr_user
+
+    context = {
+        "curr_user": curr_user
     }
-    return render(request, 'email_verification.html',context)    
+    return render(request, 'email_verification.html', context)
+ 
                  
              
          
     
+# def email_verification(request, email_token):
+#     user = Profile.objects.get(email_token=email_token)
+#     curr_user = user.user
+
+#     if request.method == 'POST':
+#         email_otp = request.POST.get('email_otp')
+#         if user.email_otp == email_otp:
+#             user.is_email_verified = True
+#             user.save()
+#             send_email(request, curr_user.username, curr_user.first_name)
+#             login(request, curr_user)
+#             return render(request, 'login.html', context)
+
+#         else:
+#             messages.error(request, 'Invalid OTP')
+#             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+#     context = {
+#         "curr_user": curr_user
+#     }
+#     return render(request, 'email_verification.html', context)

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['.vercel.app' , '.now.sh','127.0.0.1','localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,19 +78,26 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-from decouple import config
+# from decouple import config
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DB_NAME', default='railway'),
+#         'USER': config('DB_USER', default='postgres'),
+#         'PASSWORD': config('DB_PASSWORD', default='OKbqeqqBk1dnafQd9qEF'),
+#         'HOST': config('DB_HOST', default='containers-us-west-39.railway.app'),
+#         'PORT': config('DB_PORT', default='6239'),
+#     }
+# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='railway'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='OKbqeqqBk1dnafQd9qEF'),
-        'HOST': config('DB_HOST', default='containers-us-west-39.railway.app'),
-        'PORT': config('DB_PORT', default='6239'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
-
 
 
 
@@ -152,9 +160,20 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'aabi77161@gmail.com'
-EMAIL_HOST_PASSWORD = 'just4alx'
+EMAIL_HOST_USER = 'knox7529@gmail.com'
+EMAIL_HOST_PASSWORD = 'qokr wahv njcj jsdn'
 
 
 KEY='rzp_test_2pFUbM1yywHQFk'
 SECRET='2MkCWuBlKEZntNOrSS5giqq2'
+
+
+# from django.core.mail import send_mail
+
+# send_mail(
+#     'Testing Email',
+#     'Hello, this is  a test',
+#     'your.knox7529@gmail.com',
+#     ['sottiegadson@gmail.com'],
+#     fail_silently=False,
+# )
