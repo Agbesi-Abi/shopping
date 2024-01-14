@@ -68,28 +68,30 @@ def details_page(request,slug):
 
 
 @login_required(login_url="/sign")
-def add_to_cart(request,uid):
-    size=request.GET.get('size')
-    # print(size)
-    if size:
-        products=Product.objects.get(uid=uid)
-        
-        user=request.user
-        cart,_= Cart.objects.get_or_create(user=user,is_paid=False)
-        # size=request.GET.get('size')
-        size_variant=SizeVariant.objects.get(size_name=size)
-        
-        cart_items=CartItem.objects.create(cart=cart,products=products,size_variant=size_variant)
-        # cart_items.size_variant=size_variant
-       
-        cart_items.save()
-        messages.error(request,f'1 {products} has been added to cart')
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    else:
-        messages.error(request,'Please select a Size to proceed')
-        # print('not in cart')
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def add_to_cart(request, uid):
+    size = request.GET.get('size')
 
+    if size:
+        try:
+            product = Product.objects.get(uid=uid)
+            user = request.user
+            cart, _ = Cart.objects.get_or_create(user=user, is_paid=False)
+            size_variant = SizeVariant.objects.get(size_name=size)
+
+            cart_item, created = CartItem.objects.get_or_create(cart=cart, products=product, size_variant=size_variant)
+
+            if not created:
+                # If the item already exists in the cart, you might want to update the quantity or handle it differently.
+                cart_item.quantity += 1
+                cart_item.save()
+
+            messages.success(request, f'1 {product} has been added to the cart')
+        except Product.DoesNotExist:
+            messages.error(request, 'Product not found')
+    else:
+        messages.error(request, 'Please select a size to proceed')
+
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
 
 def remove_Cart(request,cart_item_uid):

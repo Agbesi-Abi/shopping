@@ -46,8 +46,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -81,25 +81,23 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # from decouple import config
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config('DB_NAME', default='railway'),
-#         'USER': config('DB_USER', default='postgres'),
-#         'PASSWORD': config('DB_PASSWORD', default='OKbqeqqBk1dnafQd9qEF'),
-#         'HOST': config('DB_HOST', default='containers-us-west-39.railway.app'),
-#         'PORT': config('DB_PORT', default='6239'),
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'OKbqeqqBk1dnafQd9qEF',
+       'HOST': 'containers-us-west-39.railway.app',
+        'PORT': '6239',
     }
 }
 
-
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': BASE_DIR / "db.sqlite3",
+    #}
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -160,20 +158,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'knox7529@gmail.com'
-EMAIL_HOST_PASSWORD = 'qokr wahv njcj jsdn'
+EMAIL_HOST_USER = 'aabi77161@gmail.com'
+EMAIL_HOST_PASSWORD = 'ccok qobz weyd tuzr'
 
 
 KEY='rzp_test_2pFUbM1yywHQFk'
 SECRET='2MkCWuBlKEZntNOrSS5giqq2'
-
-
-# from django.core.mail import send_mail
-
-# send_mail(
-#     'Testing Email',
-#     'Hello, this is  a test',
-#     'your.knox7529@gmail.com',
-#     ['sottiegadson@gmail.com'],
-#     fail_silently=False,
-# )

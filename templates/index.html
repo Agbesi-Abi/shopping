@@ -18,17 +18,17 @@
          >
 
         <p class="font-bold text-sm uppercase "
-		style="color: purple;">bonjour</p>
+		style="color: rgb(248, 109, 55);">bonjour</p>
         <p class="text-3xl font-bold">Hello 
 			{% if request.user.is_authenticated  %}
 			<span class=" uppercase   hover:underline"
-			style="color: purple;">{{request.user.first_name}}</span> 
+			style="color: rgb(138, 232, 248);">{{request.user.first_name}}</span> 
 			{% else %}
 			<span class=" uppercase hover:underline"
-			style="color: purple;">User</span> 
+			style="color: rgb(137, 218, 243);">User</span> 
 			{% endif %}
 			</p>
-        <p class="text-2xl text-purple-00 font-serif  mb-10 ">Welcome to our all new ecommerce site</p>
+        <p class="text-2xl text-yellow-300 font-serif  mb-10 ">Welcome to our all new ecommerce site</p>
         <a href="#"
           class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Contact
           us</a>
@@ -40,7 +40,7 @@
   <div class="px-8  bg-violet-500 text-black">
 	<div class="flex p-[10px] items-center mx-auto container justify-center md:justify-between">
 		<div>
-			<span>Get 90 off on  your first order , Apply FIRSTBUY,&nbsp;</span>
+			<span>Get 200 off on  your first order , Apply FIRSTBUY,&nbsp;</span>
 			<a href="/sign" rel="noopener noreferrer" class="underline">sign in </a>today!
 		</div>
 		
@@ -72,7 +72,7 @@
 					<h3 class="flex-1 py-2 text-lg font-semibold leadi">{{category.product_name}}</h3>
 					<div class="flex flex-wrap justify-between pt-3 space-x-2 text-xs ">
 						<a href="{{category.category_name}}"><span class="uppercase text-[18px]">{{category.category_name}}</span></a>
-						<span>GHC {{category.price}}</span>
+						<span>GHS{{category.price}}</span>
 					</div>
 				</div>
 			</article>
@@ -118,10 +118,10 @@
 
   // If the width of the window is less than 768px, then set the background image to the mobile image.
   if (windowWidth < 800) {
-    document.querySelector('.bg-image').style.backgroundImage = 'url("../static/images/bg short.png';
+    document.querySelector('.bg-image').style.backgroundImage = 'url("../static/images/bg short.png")';
   } else {
     // Otherwise, set the background image to the desktop image.
-    document.querySelector('.bg-image').style.backgroundImage = 'url("../static/images/80% OFF (1).png")';
+    document.querySelector('.bg-image').style.backgroundImage = 'url("../static/images/Fotoram.io (1).png")';
   }
 }
 
